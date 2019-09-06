@@ -1,0 +1,11 @@
+<html>
+<h1>Update {{ability.name}}:</h1>
+<form id="update-ability" action="/abilities" method="post">
+    Name: <input type="text" name="name" value= "{{ability.name}}"><br>
+	<br>
+ </form>
+<button onclick="updateAbility({{ability.id}})">Update</button>
+
+        <br>
+        <td><a href="/heroes">Cancel</a></td>
+</html>

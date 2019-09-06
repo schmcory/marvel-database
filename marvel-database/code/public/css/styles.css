@@ -1,0 +1,31 @@
+/* TOP NAGVIGATION BAR */
+.topnav {
+    background-color: black;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    color: #F2EBEB;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #FBF5F5;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #03ADE9;
+    color: white;
+}
+
+/* CAROUSEL */
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 50%;
+    margin: auto;
+}

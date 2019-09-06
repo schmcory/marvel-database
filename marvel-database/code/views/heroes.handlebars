@@ -1,0 +1,100 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="static/css/styles.css" rel="stylesheet">     
+</head> 
+
+<body>
+
+        <div class="topnav">
+        <a class="#" href="/"><img src="static/css/marvel-logo.png"></a>
+        <a class="active" href="/heroes">Heroes</a>
+       	<a class="#villains" href="/villains">Villains</a>
+        <a class="#planets" href="/planets">Planets</a>
+        <a class="#abilities" href="/abilities">Abilities</a>
+        <a class="#teams" href="/teams">Teams</a>
+        <a class="#heroes-teams" href="/heroes-teams">Heroes-Teams</a>
+        <a class="#heroes-abilities" href="/heroes-abilities">Heroes-Abilities</a>
+    </div> 
+
+{{#each foo}}
+{{this}}
+{{/each}}
+
+<!-- Add New Heroes -->
+<h3>Add new hero:</h3>
+<form id="add_hero" action="/heroes" method="post">
+    First name: <input type="text" name="firstName"><br>
+    Last name: <input type="text" name="lastName"><br>
+    Species: <input type="text" name="species"><br>
+    Age: <input type="number" name="age"><br>
+    Alias: <input type="text" name="alias"><br>
+    Love interest: <input type="text" name="loveInterest"><br>
+    Home planet: <select name="homePlanet"> 
+        {{#each planets}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select><br>
+    <input type="submit" value="Submit">
+ </form>
+ 
+<br>
+<!-- Filter Heroes --->
+<div>
+<form id='filter_heroes' action='' method=''>
+    <label> Filter hero by home planet:</label>
+    <select id='home_planet_filter' name = 'home_planet_filter'>
+        {{#each planets}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+	</select><br>
+    <input type = "button" value = "Filter" onclick = "filterHeroesByHomePlanet()">
+</form>
+</div>
+
+
+<!-- Search Heroes --->
+<div>
+<form id='search_heroes' action='' method=''>
+    <label> Search hero for alias starting with:</label>
+    <input id='alias_search_string' type='text' name='alias_search_string' value =''>
+    <input type = "button" value = "Search" onclick = "searchHeroesByAlias()">
+</form>
+</div>
+
+<br>
+
+<!-- Current Heroes -->
+<div>
+<h3>Current heroes:</h3>
+    <table>
+    <thead> 
+        <tr><th>First Name</th> 
+        <th>Last Name</th>
+        <th>Species</th>  
+        <th>Age</th> 
+        <th>Alias</th> 
+        <th>Love interest</th> 
+        <th>Home planet</th>
+    </tr></thead> 
+    <tbody>
+            {{#each heroes}}
+    <tr> 
+            <td>{{firstName}}</td> 
+            <td>{{lastName}}</td> 
+            <td>{{species}}</td> 
+            <td>{{age}}</td>
+            <td>{{alias}}</td>
+            <td>{{loveInterest}}</td>
+            <td>{{homePlanet}}</td> 
+            <td><button onclick="deleteHero({{id}})">Delete</button></td>
+            <td><a href="/heroes/{{id}}">Update</a></td>
+        </tr>
+        {{/each}} 
+        </tbody> 
+</table>
+</div>
+<body> 
+</html>
+

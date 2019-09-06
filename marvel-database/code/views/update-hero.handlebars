@@ -1,0 +1,23 @@
+<html>
+<h1>Update {{hero.alias}}:</h1>
+<form id="update-hero" action="/heroes" method="post">
+    First name: <input type="text" name="firstName" value="{{hero.firstName}}"><br>
+    Last name: <input type="text" name="lastName" value="{{hero.lastName}}"><br>
+    Species: <input type="text" name="species" value="{{hero.species}}"><br>
+    Age: <input type="number" name="age" value="{{hero.age}}"><br>
+    Alias: <input type="text" name="alias" value="{{hero.alias}}"><br>
+    Love interest: <input type="text" name="loveInterest" value="{{hero.loveInterest}}"><br>
+    Home planet: <select name="homePlanet" id= "planet-selector"> 
+        {{#each planets}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select><br>
+ </form>
+<button onclick="updateHero({{hero.id}})">Update</button>
+<script defer>selectPlanet({{hero.homePlanet}});</script>
+
+        <br>
+        <td><a href="/heroes">Cancel</a></td>
+</html>
+
+

@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="static/css/styles.css" rel="stylesheet">   
+</head> 
+
+        <div class="topnav">
+        <a class="#" href="/"><img src="static/css/marvel-logo.png"></a>
+        <a class="#heroes" href="/heroes">Heroes</a>
+       	<a class="active" href="/villains">Villains</a>
+        <a class="#planets" href="/planets">Planets</a>
+        <a class="#abilities" href="/abilities">Abilities</a>
+        <a class="#teams" href="/teams">Teams</a>
+        <a class="#heroes-teams" href="/heroes-teams">Heroes-Teams</a>
+        <a class="#heroes-abilities" href="/heroes-abilities">Heroes-Abilities</a>
+    </div> 
+
+{{#each foo}}
+{{this}}
+{{/each}}
+
+
+<!-- Add New Villains -->
+<h3>Add new villain:</h3>
+<form id="add_villain" action="/villains" method="post">
+    First name: <input type="text" name="vfirstName"><br>
+    Last name: <input type="text" name="vlastName"><br>
+    Species: <input type="text" name="vspecies"><br>
+    Age: <input type="number" name="vage"><br>
+    Alias: <input type="text" name="valias"><br>
+    Enemy: <select name="enemy"> 
+        {{#each heroes}}
+        <option value="{{id}}">{{alias}}</option>
+        {{/each}}
+    </select><br>
+    <input type="submit" value="Submit">
+ </form>
+
+ 
+<!-- Current Heroes -->
+<div>
+ <h3>Current villains:</h3>
+    <table>
+    <thead> 
+        <tr><th>First Name</th> 
+        <th>Last Name</th>
+        <th>Species</th>  
+        <th>Age</th> 
+        <th>Alias</th> 
+        <th>Enemy</th> 
+    </tr></thead> 
+    {{#each villains}}
+    <tbody><tr> 
+            <td>{{vfirstName}}</td> 
+            <td>{{vlastName}}</td> 
+            <td>{{vspecies}}</td> 
+            <td>{{vage}}</td>
+            <td>{{valias}}</td>
+            <td>{{enemy}}</td>
+            <td><button onclick="deleteVillain({{id}})">Delete</button></td>
+            <td><a href="/villains/{{id}}">Update</a></td>
+        </tr>
+         {{/each}} 
+        </tbody> 
+</table> 
+</div>
+</html>
+ 

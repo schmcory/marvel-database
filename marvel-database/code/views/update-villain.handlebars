@@ -1,0 +1,22 @@
+<html>
+<h1>Update {{villain.valias}}:</h1>
+<form id="update-villain" action="/villains" method="post">
+    First name: <input type="text" name="vfirstName" value="{{villain.vfirstName}}"><br>
+    Last name: <input type="text" name="vlastName" value="{{villain.vlastName}}"><br>
+    Species: <input type="text" name="vspecies" value="{{villain.vspecies}}"><br>
+    Age: <input type="number" name="vage" value="{{villain.vage}}"><br>
+    Alias: <input type="text" name="valias" value="{{villain.valias}}"><br>
+    Enemy: <select name="enemy" id="hero-selector"> 
+        {{#each heroes}}
+        <option value="{{id}}">{{alias}}</option>
+        {{/each}}
+    </select><br>
+ </form>
+<button onclick="updateVillain({{villain.id}})">Update</button>
+<script defer>selectHero({{villain.enemy}});</script>
+
+	    <br>
+        <td><a href="/heroes">Cancel</a></td>
+</html>
+
+
